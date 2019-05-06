@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Grab : MonoBehaviour
 {
-    void Update(){
-        if(Input.GetButton("Grab")){
-            print("clicky");
+    void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Grabbable"){
+            if(Input.GetButton("Grab")){
+                other.transform.position = gameObject.transform.position;
+            }
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Grabbable"){
-            print("I can grab this.");
-        }
-    }
+
 }
